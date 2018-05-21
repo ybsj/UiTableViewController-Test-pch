@@ -3,8 +3,12 @@ import UIKit
 
 class MyTableViewController: UITableViewController {
     
-    var data = ["홍길동", "임꺽정", "을지문덕", "이순신", "강감찬"]
-
+    var foodStoreNames = ["늘해랑", "번개반점", "아딸", "왕짜장", "토마토 도시락","홍콩반점"]
+    var foodStoreThumbnail = ["01","02","03","04","05","06"]
+    var foodStoreAddress = ["부산광역시 부산진구 양정동 418-282","부산광역시 부산진구 양정동 418-282","부산광역시 부산진구 양정동 418-282","부산광역시 부산진구 양정동 418-282","부산광역시 부산진구 양정동 418-282","부산광역시 부산진구 양정동 418-282"]
+    var foodStoreTel = ["051-852-9969","051-852-9969","051-852-9969","051-852-9969","051-852-9969","051-852-9969"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,17 +35,20 @@ class MyTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return data.count
+        return foodStoreNames.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RE", for: indexPath)
+        as! FoodStoreTableViewCell
 
         // Configure the cell...
         
-        cell.textLabel?.text = data[indexPath.row]
-
+        cell.foodStoreCellName.text = foodStoreNames[indexPath.row]
+        cell.foodStoreCellImage.image = UIImage(named: foodStoreThumbnail[indexPath.row])
+        cell.foodStoreCellAddress.text = foodStoreAddress[indexPath.row]
+        cell.foodStoreStorecellTel.text = foodStoreTel[indexPath.row]
         return cell
     }
     
